@@ -1,0 +1,25 @@
+{
+    "architecture": "all",
+    "description": "A music application for ubuntu",
+    "framework": "ubuntu-sdk-14.10-qml",
+    "hooks": {
+        "music": {
+            "apparmor": "apparmor.json",
+            "content-hub": "music-app-content.json",
+            "desktop": "@DESKTOP_FILE@",
+            "urls": "@URLS_FILE@"
+        }
+    },
+    "icon": "@ICON@",
+    "maintainer": "Ubuntu App Cats <ubuntu-touch-coreapps@lists.launchpad.net>",
+    "name": "@PROJECT_NAME@",
+    "title": "Music",
+    "version": "2.1.@BZR_REVNO@",
+    "x-source": {
+        "vcs-bzr": "@BZR_SOURCE@",
+        "vcs-bzr-revno": "@BZR_REVNO@"
+    },
+    "x-test": {
+        "autopilot": "@AUTOPILOT_DIR@"
+    }
+}

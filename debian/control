@@ -1,0 +1,45 @@
+Source: music-app
+Section: misc
+Priority: extra
+Maintainer: Ubuntu App Cats <ubuntu-touch-coreapps@lists.launchpad.net>
+Build-Depends: cmake,
+               debhelper (>= 9),
+               intltool,
+               python3,
+               qt5-default,
+Standards-Version: 3.9.4
+Homepage: https://launchpad.net/music-app
+Vcs-Bzr: https://code.launchpad.net/~music-app-dev/music-app/trunk
+
+Package: music-app
+Architecture: all
+Depends: mediascanner2.0,
+         gstreamer0.10-fluendo-mp3,
+         gstreamer1.0-fluendo-mp3,
+         qmlscene,
+         qml-module-qt-labs-settings,
+         qtdeclarative5-ubuntu-content0.1,
+         qtdeclarative5-localstorage-plugin,
+         qtdeclarative5-particles-plugin,
+         qtdeclarative5-qtmultimedia-plugin,
+         qtdeclarative5-qtquick2-plugin,
+         qtdeclarative5-ubuntu-mediascanner0.1,
+         qtdeclarative5-ubuntu-thumbnailer0.1,
+         qtdeclarative5-ubuntu-ui-toolkit-plugin,
+         qtdeclarative5-usermetrics0.1,
+         qtdeclarative5-window-plugin,
+         thumbnailer-service,
+         suru-icon-theme | ubuntu-mobile-icons,
+         ${misc:Depends},
+Description: Music player for Ubuntu Touch
+ Touch enabled music player for Ubuntu
+
+Package: music-app-autopilot
+Architecture: all
+Depends: libautopilot-qt (>= 1.4),
+         libqt5test5,
+         music-app (= ${source:Version}),
+         ubuntu-ui-toolkit-autopilot,
+         ${misc:Depends},
+Description: Autopilot tests for Music App
+ This package contains the autopilot tests for the Music App

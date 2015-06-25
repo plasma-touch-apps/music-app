@@ -1,0 +1,304 @@
+music-app (2.1) vivid; urgency=medium
+
+  [ Andrew Hayzen ]
+  * Fixes and add preloading compatibility to ColumnFlow.qml.
+  * Only autoset the source due to queue count changes when the queue worker has completed.
+  * Improve the way the currentIndex is restored so that there is less/no delay.
+  * Delay urlhandler/content-hub calls until after walkthrough is complete. Fixes: https://bugs.launchpad.net/bugs/1438317.
+  * Make SongsView and ArtistView adaptive. Fixes: https://bugs.launchpad.net/bugs/1436771.
+  * Ensure dialogs are closed before popping a page. Fixes: https://bugs.launchpad.net/bugs/1435658.
+  * Split content-hub, uri-handler and metrics into Helpers.
+  * Split the NowPlaying page into NowPlaying, Queue and NowPlayingToolbar
+  * Destroy dialog before popping page. Fixes: https://bugs.launchpad.net/bugs/1428450.
+  * Move delegates into their own folder in components
+  * Create generic MultiSelectListView.qml for handling multiselect
+  * Do not allow LibraryEmptyState loader to be active if content-hub is running. Fixes: https://bugs.launchpad.net/bugs/1418366.
+  * Move all Dialog components into their own files in components/Dialog.
+  * Create common components for Play All, Queue All and Shuffle buttons within 'Views'.
+  * Split EmptyStates into a page (for noMusic) and a component (for noPlaylists) and load in async.
+  * Move existing head states into HeadState folder
+  * Make use of SDK PageStack.push(url, properties) instead of creating the component, object and pushing ourselves.
+  * Rename common to components
+  * Move pages into separate /ui folder
+  * Fix for autopilot launcher detection for debian mode.
+  * Move applications files into app folder. Fixes: https://bugs.launchpad.net/bugs/1357319.
+
+  [ Darran Kelinske ]
+  * Added a test case for deleting a playlist. Fixes: https://bugs.launchpad.net/bugs/1428454.
+
+  [ Victor Thompson ]
+  * Prevent click build warnings for unterminated string literals
+  * Improve multiselect delete for playlist items. Fixes: https://bugs.launchpad.net/bugs/1439185.
+  * Force active focus to dialogs. Fixes: https://bugs.launchpad.net/bugs/1435260.
+  * Merge from trunk to refactor to pull in trunk revision 832 and updated translations.
+  * Trigger list reset animation when the index did not change. Fixes: https://bugs.launchpad.net/bugs/1428913.
+  * Do not show toolbar in the 'Select playlist' view. Fixes: https://bugs.launchpad.net/bugs/1417823.
+
+ -- Victor Thompson <victor.thompson@gmail.com>  Sun, 09 May 2015 19:31:23 -0500
+
+music-app (2.0) utopic; urgency=medium
+
+  * Fix for cover art getting out of sync on the SongsPage.qml
+  * Ensure recent/playlists pages remain in sync as items are added/removed from the playlist.
+  * Update ListItemWithActions background color and reenable dim
+  * Optimise the addQueueList transaction.
+  * Sort playlists by name.
+  * Change scrolling behaviour
+  * Performance tweaks to ListItemWithActions.qml.
+  * Change recent schemas so that it stores less and loads more from ms2 (eg art).
+  * Fix for console errors when clearing the queue.
+  * Only load model once CardView is visible.
+  * Create generic WorkerModelLoader.qml
+  * Load queue at startup via WorkerScript.
+  * Intial changes to remember the previous queue when restarting the app.
+  * Load queueList in async
+  * Fix to prevent jumping from queue->full view
+  * Defer loading of pages
+  * Async load MediaPlayer object.
+  * Correctly hide empty state when in Now Playing or Queue.
+  * Async loading of MusicNowPlaying.
+  * Add read path to Music on the SD card to extract in process thumbnail extraction.
+  * Highlight stroke buttons on press.
+  * Optimise MusicRow.qml by using Image rather than CoverGrid (as there will only ever be one image).
+  * Add a bottom margin to MusicTracks.qml and MusicNowPlaying.qml.
+  * Fix playlist art in Now Playing page.
+  * Add save to playlist action
+  * Only enable actions in now playing when trackQueue count > 0
+  * Use async for loaders and unused loaders invisible.
+  * Move to using Qt.labs.settings and remove settings.js.
+  * Remove CoverRow
+  * Remove isPressedChanged workaround
+  * Remove MusicRow isSquare specialization.
+  * Remove lastfm, search and settings.
+  * Pull upstream ListItemWithActions.qml
+  * Add support for multiselect mode
+  * Disable triggerOnRelease.
+  * Initial empty state prototype.
+  * Do not show the artist in the grid of albums.
+  * Fix so that label is correct when seeking when paused.
+  * Only show year in SongsPage.qml if year exists.
+  * Add an initial Genres tab.
+  * Disable clear recent icon when recent is empty.
+  * Make Images asynchronous.
+  * Add back apparmor confinement.
+  * Use CardView in Recent Tab
+  * Use Recent as default if >0 recent items otherwise use Albums Tab.
+  * Set sourceSize of images.
+  * Force AlbumsPage's SongsModel to filter upon startup.
+  * Fix playlist deletion and renaming in recent table.
+  * Add support for CardView in AlbumsPage.qml
+  * Add support for header property in CardView.qml
+  * Add BlurredHeader.qml
+  * Make AlbumsPage.qml and SongsPage.qml use BlurredHeader.qml.
+  * Allow for imports (from content-hub) to start when already importing.
+  * Use CardView in MusicPlaylists.qml
+  * Use header actions for edit and delete of playlists.
+  * Make SongsPage use CoverGrid.
+  * Add CoverGrid.qml component
+  * Use CoverGrid in Card.qml
+  * Initial Artists view with CardView.
+  * Add clear queue action. Fixes: https://bugs.launchpad.net/bugs/1379895.
+  * Switch to use positionAt when isListView becomes true
+  * Strip out jumpTo/ensureVisible code for the now playing queue
+  * Fix for console errors when pressing items in queue.
+  * Remove deleted item before updating currentIndex.
+  * Initial Now Playing queue list refactor
+  * Initial Songs tab redesign for remix.
+  * Ignore first value back after seeking [Workaround]. Fixes: bug 1310706.
+  * Do not switch to full view if clicking a song in the queue.
+  * Fix Ubuntu-Splash-Color to not get pulled into translations.
+  * Albums tab makes use of 'CardView'
+  * Old toolbars removed
+  * Now playing "full" view is now default
+  * Fix header disappearing in "full" view
+  * Fix for cover art in albums tab to use correct data
+  * SongsPage implemented
+  * Now Playing "full" view implemented (other than swiping and margins need review)
+  * Toolbar implemented and always shown (Now Playing "list" view shows old toolbar)
+  * Background colour of app set
+
+ -- Victor Thompson <victor.thompson@gmail.com>  Wed, 29 Oct 2014 06:41:45 -0500
+
+music-app (1.2ubuntu2) trusty; urgency=medium
+
+  [ Andrew Hayzen ]
+  * Refactor media player to make it easier to change shuffle/repeat
+  * Added basic keyboard shortcuts
+  * Modify cmakelist to scan for *.qml files
+
+  [ Dimitri John Ledkov ]
+  * Use python 3 compatible mock import
+
+  [ Alan Pope ]
+  * Add -qt5 command line option [lp:#1288885]
+
+  [ Victor Thompson ]
+  * Add an autopilot test to test playing a song from the Artists tab. [lp:#1268455]
+  * Remove duplicate quit in HUD and move back button so visible [lp:#1285838]
+  * Rebuild library from scratch on each run [lp:#1287720]
+  * Fix PPA issue due to change log [lp:#1284637]
+
+ -- Andrew Hayzen <ahayzen@gmail.com>  Mon, 10 Mar 2014 18:12:00 +0000
+
+music-app (1.2ubuntu1); urgency=medium
+
+  [ Daniel Holm ]
+  * Search functionality
+
+  [ Alan Pope ]
+  * Fix .desktop file [lp:#1284025] 
+  * New icon 
+
+ -- Alan Pope <popey@ubuntu.com>  Mon, 24 Feb 2014 12:13:29 +0000
+
+music-app (1.1) raring; urgency=low
+
+  * Blurred album art added to the now playing queue
+  * Solid labels on cover art
+  * Test shuffle and mp3 playback
+  * Enable translations
+  * Add recent albums and playlists to Music tab
+  * Introduce user metrics of songs played
+  * Optimize music library loading time
+
+ -- Victor Thompson <victor.thompson@gmail.com>  Tue, 29 Oct 2013 20:16:34 -0500
+
+music-app (1.0) raring; urgency=low
+
+  * Finalize changes before Saucy 13.10 release.
+
+ -- Victor Thompson <victor.thompson@gmail.com>  Thu, 10 Oct 2013 04:21:11 -0500
+
+music-app (0.9) raring; urgency=low
+
+  * A LOT of changes.
+
+ -- Daniel Holm <d.holmen@gmail.com>  Thu, 10 Oct 2013 00:39:50 +0200
+
+music-app (0.8) saucy; urgency=low
+
+  * Added support for building and shipping translations
+
+ -- David Planella <david.planella@ubuntu.com>  Thu, 26 Sep 2013 09:52:47 +0200
+
+music-app (0.7) raring; urgency=low
+
+  * Now uses mediascanner.
+
+ -- Victor Thompson <victor.thompson@gmail.com>  Tue, 23 Sep 2013 19:47:50 -0500
+
+music-app (0.6.5) raring; urgency=low
+
+  * Resolved bug with duplicate removal error of tracks in playlist.
+  * Added support for arguments.
+  * Use sheets for add track to Playlist and Settings.
+  * Fixed issue with toolbar not showing up in Playlists tab.
+  * Clean up and smaller fixes.
+
+ -- Daniel Holm <d.holmen@gmail.com>  Sat, 21 Sep 2013 14:41:50 +0200
+
+music-app (0.6) raring; urgency=low
+
+  * New first page with last played tracks and genre.
+  * Playlists shows number of tracks in playlist.
+  * NowPlaying has become the central part.
+  * New Icon, thanks to Sam Hewitt.
+  * 100th rev!
+
+ -- Daniel Holm <d.holmen@gmail.com>  Thu, 03 Sep 2013 21:41:50 +0200
+
+music-app (0.5) raring; urgency=low
+
+  * HUD support.
+
+ -- Daniel Holm <d.holmen@gmail.com>  Fri, 02 Aug 2013 21:29:50 +0200
+
+music-app (0.4.7) raring; urgency=low
+
+  * Queue moved to playlist tab.
+  * Queue tracks now in own page.
+
+ -- Daniel Holm <d.holmen@gmail.com>  Wed, 17 Jul 2013 18:29:50 +0200
+
+music-app (0.4.5) raring; urgency=low
+
+  * Show tracks in playlists.
+  * Removed queue from toolbar to Playlist tab. Initial queue change.
+  * Play track from playlist.
+
+ -- Daniel Holm <d.holmen@gmail.com>  Wed, 17 Jul 2013 18:29:50 +0200
+
+music-app (0.4.3) raring; urgency=low
+
+  * Provide new icons.
+
+ -- Lucas Romero Di Benedetto <lucasromerodb@gmail.com>  Wed, 17 Jul 2013 01:47:50 +0100
+
+music-app (0.4.2) raring; urgency=low
+
+  * Added worker for adding rows to Library model (allows gui to respond while adding to the ListModel)
+  * Tracks are now sorted by Artist->Album->File
+  * Text on rows in MusicTracks and MusicArtists now doesn't wrap. This means that if it is too long it now doesn't cover the row below.
+  * Rows in MusicTracks and MusicArtists now expand to fit their parent, therefore expanding as the window expands.
+
+ -- Andrew Hayzen <ahayzen@gmail.com>  Wed, 17 Jul 2013 01:47:50 +0100
+
+music-app (0.4.1) raring; urgency=low
+
+  * Use resolution independent font sizes for text.
+
+ -- Victor Thompson <victor.thompson@gmail.com>  Tue, 16 Jul 2013 19:47:50 -0500
+
+music-app (0.4) raring; urgency=low
+
+  * Create new playlists.
+  * Edit name of existing playlists.
+  * Remove playlists.
+  * Add track to playlist.
+  * Popover in track list.
+
+ -- Daniel Holm <d.holmen@gmail.com>  Wed, 15 Jul 2013 15:03:31 +0200
+
+music-app (0.3.1) raring; urgency=low
+
+  * Resolved issues with icons in toolbar changing when switching tab.
+  * Read music from ~/Music and populate library on each start.
+
+ -- Victor Thompson <victor.thompson@gmail.com>  Sun, 09 Jul 2013 19:47:50 -0500
+
+music-app (0.3) raring; urgency=low
+
+  * Back to tabs.
+  * Album covers in Albums tab.
+  * New toolbar.
+  * Initial code for scrobble support.
+  * Inital UI for last.fm - login dialog, import playlists.
+  * Inital code for playlists.
+  * Bug fixes for the library.
+  * Added a temporary reset settings button in settings.
+
+ -- Daniel Holm <d.holmen@gmail.com>  Tue, 18 Jun 2013 14:45:50 +0200
+
+music-app (0.2.2) raring; urgency=low
+
+  * Changing name of application to music-app
+
+ -- Victor Thompson <victor.thompson@gmail.com>  Sun, 09 Jun 2013 19:47:50 -0500
+
+music-app (0.2.1) raring; urgency=low
+
+  * Changing name of application to ubuntu-music-app
+
+ -- Daniel Holm <d.holmen@gmail.com>  Tue, 04 Jun 2013 16:43:32 +0200
+
+music-app (0.2) raring; urgency=low
+
+  * Merge of Daniel's and Victor's code
+
+ -- Victor Thompson <victor.thompson@gmail.com>  Tue, 04 June 2013 11:45:00 -0500
+
+music-app (0.1) raring; urgency=low
+
+  * Initial Release.
+
+ -- Michael <mhall119@ubuntu.com>  Thu, 23 May 2013 17:10:45 -0400
